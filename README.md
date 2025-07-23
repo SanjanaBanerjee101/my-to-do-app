@@ -29,7 +29,7 @@ A dynamic and responsive To-Do List web app built with Flask, SQLAlchemy, SCSS, 
 ## 🚀 How to Run Locally
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/SanjanaBanerjee101/my-to-do-app.git
 cd your-repo
 pip install flask sqlalchemy
 python app.py
