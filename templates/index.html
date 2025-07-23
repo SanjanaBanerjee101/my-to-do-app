@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <h1>Task App 2.0</h1>
+    <hr>
+{% endblock %}
+    
+{% block body %}
+    <div class="content">
+        {% if tasks | length < 1%}
+        <h2>There are no existing contents.....How about u create some!!!</h2>
+        {% else %}
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Tasks</th>
+                <th>Schedule Task</th>
+                <th>Created on</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>{{task.content}}</td>
+                <td>{{ task.time.strftime("%d-%m-%Y")}}<br>{{ task.time.strftime("%H:%M") }}</td>
+                
+
+                <td>{{task.created.strftime("%d-%m-%Y")}}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">DELETE</a>
+                    <a href="/update/{{task.id}}">EDIT</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content" required minlength="1">
+            <input type="submit" value="ADD TASK" id="btn_add">
+            <input type="datetime-local" name="time" id="time" required minlength="1" style="display: inline-block;">
+            <input type="submit" value="Schedule Task" id="btn_add">
+        </form>
+    </div>
+
+{% endblock %}
